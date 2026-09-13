@@ -19,4 +19,14 @@ public class EmailDirector {
                 .setPriority("URGENT")
                 .build();
     }
+
+    public Email constructPasswordResetEmail(EmailBuilder builder, String recipientEmail, String resetToken) {
+        return builder
+                .setSender("security@company.com")
+                .addRecipient(recipientEmail)
+                .setSubject("Password Reset Request")
+                .setBody("You requested a password reset. Use this token: " + resetToken + "\nIf you did not request this, ignore this email.")
+                .setPriority("HIGH")
+                .build();
+    }
 }
